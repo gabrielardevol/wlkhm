@@ -1,0 +1,263 @@
+<head>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
+
+    <link rel="stylesheet" type="text/css" href="style/layout.css">
+    <link rel="stylesheet" type="text/css" href="style/card.css">
+    <link rel="stylesheet" type="text/css" href="style/calendar.css">
+    <link rel="stylesheet" type="text/css" href="style/header.css">
+    <link rel="stylesheet" type="text/css" href="style/form.css">
+
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<html>
+    <body>
+
+        <header>
+            <nav>
+                <div>2023年8月29 | 15時30分</div>
+                <button><i class="fa-solid fa-user"></i>&nbsp;ログイン</button>
+            </nav>
+
+            <div id="header-main" style="display: flex; height: 100vh; justify-content: center; align-items: center; flex-flow: column">
+                <h1 class="text-shadow"> 寿司カフェTokio
+                </h1>
+                <h2 style="color: khaki; background: black"> <i class="fa-solid fa-location-dot"></i>&nbsp;レストランとカフェの東京
+                </h2>
+                <div><i class="fa-solid fa-arrow-down" style="color: khaki"></i></div>
+                <div id="header-gradient"style="">
+                    
+                </div>
+            </div>
+           
+        </header>
+
+<style>
+    #schedule-form {
+        background: white;
+        position: relative; z-index: 12;
+    }
+</style>
+
+        <main id="cards" style="position: relative">
+
+            <style>
+                form input {
+                    width: 100%;
+                }
+            </style>
+
+            <div id="form-container">
+                <div>
+                    <div id="calendar-form">
+                        <form>
+                            <label for="date"><i class="fa-regular fa-calendar-days"></i>&nbsp;日付を選択してください：</label>
+                            <input type="date" id="date" name="date">
+                        </form>
+
+                        <form>
+                            <label for="morning_hour"><i class="fa-regular fa-clock"></i>&nbsp;時間を選択してください：</label>
+                            <select name="morning_hour" id="morning_hour" required>
+                                <option value="">Select an hour</option>
+                                <option value="12">12:00 PM</option>
+                                <option value="13">1:00 PM</option>
+                                <option value="14">2:00 PM</option>
+                                <option value="15">3:00 PM</option>
+                                <option value="16">4:00 PM</option>
+                                <option value="17">5:00 PM</option>
+                            </select>
+                        </form>
+
+                        <form >
+                            <label for="count"><i class="fa-solid fa-person"></i>&nbsp;人数：</label>
+                            <div style="display: flex;">
+                                <button type="button" onclick="decreaseCount()">-</button>
+                                <input type="number" name="count" id="count" value="1" min="1" max="10" readonly>
+                                <button type="button" onclick="increaseCount()">+</button><br><br>
+                            </div> 
+                        </form>
+                        <!-- <input type="submit" value="Submit"> -->
+                    </div> 
+
+                    <form id="signup-form" action="signup"> 
+                        <h3>サインアップ</h3>
+                        <div style="display: grid; grid-template-columns: 0fr 1fr">
+                            <label for="name"></label> <input type="text" placeholder="Gabriel">
+                            <label for="second-name"></label> <input type="" placeholder="Ardevol">
+                            <label for="telephone"></label> <input type="tel" placeholder="646 18 16 10">
+                            <label for="mail"></label> <input type="email" placeholder="example@mail.com">    
+                    </form>
+
+
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <button style="font-size: larger; padding: 1rem; border: 3px solid rgb(60, 40, 60); background: white; border-radius: 4px"><i class="fa-solid fa-user-plus"></i>&nbsp; Signup </button>
+
+                </div>
+
+              </div>
+        </main>
+
+        <script>
+            document.getElementById("signup-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            location.reload();
+        });
+        </script>
+     
+
+        <style>
+            footer {
+                color: white;
+                border-top: 1px solid white;
+                text-align: center;
+            }
+        </style>
+        <footer>
+            <div class="contact-info">
+              <h3 style="color: khaki;">お問い合わせ</h3>
+              <p>
+                <strong><i class="fa-solid fa-location-dot"></i>&nbsp;住所：</strong> 東京、日本<br>
+                <strong><i class="fa-solid fa-phone"></i>&nbsp;電話番号：</strong> +81 123-456-7890<br>
+                <strong><i class="fa-solid fa-envelope"></i>&nbsp;メール：</strong> info@example.com
+              </p>
+            </div>
+        </footer>
+    </body>
+</html>
+
+<script>
+const restaurants = [
+  {
+    "name": "Sakura Sushi House",
+    "description": "さくら寿司ハウスで寿司の芸術を体験してください。...",
+    "image": "restaurant(1).jpeg"
+  },
+  {
+    "name": "Ocean Breeze Sushi",
+    "description": "オーシャンブリーズ寿司では、海の風味をあなたの口にお届けします。...",
+    "image": "restaurant(1).jpg"
+
+  },
+  {
+    "name": "Zen Sushi Haven",
+    "description": "禅寿司ヘブンへ足を踏み入れて、寿司の芸術が中心に広がる雰囲気を味わってください。...",
+    "image": "restaurant(2).jpg"
+  }
+];
+
+const unfoldCalendar = (e) => {
+    const index = e.currentTarget.dataset.index
+    // createCalendar()
+    const form = document.querySelector("#form-container")
+    console.log(form)
+
+    form.style.display = "block"
+
+    // const card = document.querySelector(".restaurant-card[data-index='" + index + "']")
+    // const scheduleForm = document.querySelector("#schedule-form-" + index)
+    // scheduleForm.innerHTML = '<form id="schedule-form"><label for="schedule">Choose a schedule:</label><select id="schedule" name="schedule"><option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option><option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option><option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option><option value="7:00 PM - 9:00 PM">7:00 PM - 9:00 PM</option><option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option></select><br><br><input type="submit" value="Submit"> <input type="number" id="quantity" name="quantity" min="1" max="99" value="1"><button onclick="decrement()">-</button><button onclick="increment()">+</button></form>'
+
+    // card.style.gridTemplateColumns = "25% 75%"
+}
+
+
+
+
+
+function createRestaurantCard(restaurant, index) {
+    const restaurantCard = document.createElement('div');
+    restaurantCard.classList.add('restaurant-card');
+
+    const title = document.createElement("h2")
+    title.classList.add("card-title")
+    title.textContent = restaurant["name"]
+    const rc1 = document.createElement('div');
+    rc1.classList.add('rc-1');
+    rc1.classList.add("box-shadow")
+    rc1.dataset.aos = "fade-right"
+
+    const rc2 = document.createElement('div');
+    rc2.classList.add('rc-2');
+    rc2.classList.add("box-shadow-white")
+    rc2.dataset.aos = "fade-left"
+    rc2.style.backgroundImage = "url('./assets/" + restaurant["image"] + "')"
+    
+    const rc1Text = document.createElement('div');
+    rc1Text.textContent = restaurant["description"]
+
+    rc1.appendChild(title)
+    rc1.appendChild(rc1Text)
+
+    const button = document.createElement("button")
+    button.innerHTML = "<i class='fa-regular fa-calendar-days'> &nbsp; ご予約ください</i>"
+    button.classList.add("box-shadow")
+    button.classList.add("text-shadow")
+    button.dataset.index = index
+
+    const calendarContainer = document.createElement("div")
+    calendarContainer.id = "calendar" + index
+    calendarContainer.style.background = "white"
+    calendarContainer.style.margin = "0.5rem"
+    calendarContainer.style.padding = "0.5rem"
+    calendarContainer.classList.add("calendar")
+
+    const scheduleForm = document.createElement("div")
+    scheduleForm.id = "schedule-form-" + index
+    
+    // const container = document.createElement("div")
+    // container.appendChild(calendarContainer)
+    // container.appendChild(scheduleForm)
+    // rc2.appendChild(container)
+
+    button.onclick = e => unfoldCalendar(e)
+    rc2.appendChild(button)
+    restaurantCard.dataset.index = index
+    restaurantCard.style.zIndex = "13"
+
+
+    restaurantCard.appendChild(rc1);
+    restaurantCard.appendChild(rc2);
+
+    return restaurantCard;
+}
+
+    // Get the target element
+    const cardsContainer = document.getElementById('cards');
+
+    // Loop through each restaurant and create a card for it
+    restaurants.forEach((restaurant, index) => {
+        const newRestaurantCard = createRestaurantCard(restaurant, index);
+        cardsContainer.appendChild(newRestaurantCard);
+    });
+
+
+
+
+</script>
+
+<script>
+    AOS.init();
+  </script>
+
+
+<script>
+    function decreaseCount() {
+        var countInput = document.getElementById("count");
+        var count = parseInt(countInput.value);
+        if (count > 1) {
+            countInput.value = count - 1;
+        }
+    }
+
+    function increaseCount() {
+        var countInput = document.getElementById("count");
+        var count = parseInt(countInput.value);
+        countInput.value = count + 1;
+    }
+</script>

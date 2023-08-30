@@ -1,0 +1,50 @@
+#form-container {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    background: rgba(60, 40, 60, 0.7);
+    z-index: 12;
+    height: 100vh; 
+    overflow: hidden;
+    display: none;
+}
+#form-container > div {
+    margin: 3rem;
+    height: calc(100% - 6rem);
+    background: white;
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr
+}
+#signup-form, #calendar-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 50%; margin: auto;
+}
+
+input, select {
+    border: 0px solid transparent;
+    border-bottom: 3px solid rgb(60, 40, 60);
+    padding: 0.5rem;
+}
+label , select {
+    width: 100%
+}
+
+input:focus-visible {
+    border: 0px solid transparent;
+    background:rgba(60, 40, 60, 0.1);
+    border-bottom: 3px solid rgb(60, 40, 60);
+    outline: none!important;
+}
+
+form button {
+    width: fit-content; border: none; 
+    cursor: pointer;
+}
+
+#calendar-form button {
+    
+    font-size: larger;
+}

@@ -1,0 +1,28 @@
+    <style>
+      select option {
+            padding: 0.5rem;
+            background-color: #fff; /* Fallback for browsers that don't support pseudo-elements */
+        }
+
+        /* Style for selected option */
+        select option:checked {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+    
+    <h1>Select a Schedule</h1>
+    <form>
+        <label for="schedule">Choose a schedule:</label>
+        <select id="schedule" name="schedule">
+            <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+            <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+            <option value="7:00 PM - 9:00 PM">7:00 PM - 9:00 PM</option>
+            <option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

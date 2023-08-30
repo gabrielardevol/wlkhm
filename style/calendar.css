@@ -1,0 +1,53 @@
+
+.calendar {
+    z-index: 11;
+    position: relative;
+}
+
+.calendar button {
+    background: transparent!important;
+    border: none!important;
+}
+.fc-icon {
+    color: black;
+
+}
+td > div {
+    height: fit-content;
+    justify-content: center;
+}
+
+.fc-daygrid-day-events {
+    display: none
+}
+
+.fc-theme-standard td, .fc-theme-standard th {
+    /* border: 2px solid white; */
+    cursor: pointer;
+
+}
+
+.fc .fc-daygrid-day-top {
+    justify-content: center;
+}
+.fc-daygrid-day-number {
+    font-weight: 800;
+}
+.fc-daygrid-day-frame {
+    display: flex;
+    align-items: center;
+}
+thead {
+    display: none
+}
+.fc-today-button {
+    display: none!important
+}
+.fc-toolbar-chunk h2 {
+    color: black;
+}
+
+:root {
+    --fc-border-color: black!important;
+    --fc-today-bg-color: khaki!important;
+}
