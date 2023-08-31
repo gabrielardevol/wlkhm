@@ -1,6 +1,5 @@
 #header-main {
     position: relative;
-    /* z-index: 10; */
     background: url("../assets/restaurant\(1\).jpeg");
     z-index: 10
 }
@@ -33,8 +32,10 @@ nav {
 
 nav button {
     color: white;
+    text-decoration: underline;
     background: transparent;
     border: 0px solid transparent;
     border-left: 1px solid white;
-    padding: 0.5rem
+    padding: 0.5rem;
+    cursor: pointer;
 }

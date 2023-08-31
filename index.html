@@ -1,3 +1,5 @@
+<!-- TODO: estructurar semantica del formulario (ahora son tres, deben ser uno solo) -->
+
 <head>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
 
@@ -27,7 +29,7 @@
             <div id="header-main" style="display: flex; height: 100vh; justify-content: center; align-items: center; flex-flow: column">
                 <h1 class="text-shadow"> 寿司カフェTokio
                 </h1>
-                <h2 style="color: khaki; background: black"> <i class="fa-solid fa-location-dot"></i>&nbsp;レストランとカフェの東京
+                <h2 style="color: khaki; background: black; position: relative"> <i style="position: absolute; font-size: 3rem; top: -0.5rem; left: -3rem; text-shadow: 0.3rem 0.3rem black" class="fa-solid fa-location-dot"></i>&nbsp;レストランとカフェの東京
                 </h2>
                 <div><i class="fa-solid fa-arrow-down" style="color: khaki"></i></div>
                 <div id="header-gradient"style="">
@@ -37,23 +39,10 @@
            
         </header>
 
-<style>
-    #schedule-form {
-        background: white;
-        position: relative; z-index: 12;
-    }
-</style>
-
         <main id="cards" style="position: relative">
 
-            <style>
-                form input {
-                    width: 100%;
-                }
-            </style>
-
-            <div id="form-container">
-                <div>
+            <div id="form-container" >
+                <div class="box-shadow">
                     <div id="calendar-form">
                         <form>
                             <label for="date"><i class="fa-regular fa-calendar-days"></i>&nbsp;日付を選択してください：</label>
@@ -81,7 +70,6 @@
                                 <button type="button" onclick="increaseCount()">+</button><br><br>
                             </div> 
                         </form>
-                        <!-- <input type="submit" value="Submit"> -->
                     </div> 
 
                     <form id="signup-form" action="signup"> 
@@ -96,28 +84,13 @@
 
                 </div>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <button style="font-size: larger; padding: 1rem; border: 3px solid rgb(60, 40, 60); background: white; border-radius: 4px"><i class="fa-solid fa-user-plus"></i>&nbsp; Signup </button>
-
+                    <button id="form-button" style="font-size: larger; padding: 1rem; border: 3px solid rgb(60, 40, 60); background: white; border-radius: 4px"><i class="fa-solid fa-user-plus"></i>&nbsp; Signup </button>
                 </div>
-
               </div>
         </main>
 
-        <script>
-            document.getElementById("signup-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            location.reload();
-        });
-        </script>
+ 
      
-
-        <style>
-            footer {
-                color: white;
-                border-top: 1px solid white;
-                text-align: center;
-            }
-        </style>
         <footer>
             <div class="contact-info">
               <h3 style="color: khaki;">お問い合わせ</h3>
@@ -135,39 +108,53 @@
 const restaurants = [
   {
     "name": "Sakura Sushi House",
-    "description": "さくら寿司ハウスで寿司の芸術を体験してください。...",
-    "image": "restaurant(1).jpeg"
+    "description": "さくら寿司ハウスで寿司の芸術を体験してください。さくら寿司ハウスで寿司の芸術を体験してください。さくら寿司ハウスで寿司の芸術を体験してください。...",
+    "image": "restaurant(3).png"
   },
   {
     "name": "Ocean Breeze Sushi",
-    "description": "オーシャンブリーズ寿司では、海の風味をあなたの口にお届けします。...",
+    "description": "オーシャンブリーズ寿司では、海の風味をあなたの口にお届けします。オーシャンブリーズ寿司では、海の風味をあなたの口にお届けします。オーシャンブリーズ寿司では、海の風味をあなたの口にお届けします。...",
     "image": "restaurant(1).jpg"
-
   },
   {
     "name": "Zen Sushi Haven",
-    "description": "禅寿司ヘブンへ足を踏み入れて、寿司の芸術が中心に広がる雰囲気を味わってください。...",
+    "description": "禅寿司ヘブンへ足を踏み入れて、寿司の芸術が中心に広がる雰囲気を味わってください。禅寿司ヘブンへ足を踏み入れて、寿司の芸術が中心に広がる雰囲気を味わってください。禅寿司ヘブンへ足を踏み入れて、寿司の芸術が中心に広がる雰囲気を味わってください。...",
     "image": "restaurant(2).jpg"
+  },
+  {
+    "name": "Bamboo Delight Sushi",
+    "description": "竹のデライト寿司は、自然の調和を感じることができる場所です。竹のデライト寿司は、自然の調和を感じることができる場所です。竹のデライト寿司は、自然の調和を感じることができる場所です。...",
+    "image": "restaurant(1).jpeg"
+  },
+  {
+    "name": "Mystic Seas Sushi",
+    "description": "ミスティックシーズ寿司は、神秘的な海の世界をテーマにしています。ミスティックシーズ寿司は、神秘的な海の世界をテーマにしています。ミスティックシーズ寿司は、神秘的な海の世界をテーマにしています。...",
+    "image": "restaurant(4).jpg"
   }
 ];
 
+
 const unfoldCalendar = (e) => {
     const index = e.currentTarget.dataset.index
-    // createCalendar()
+
     const form = document.querySelector("#form-container")
     console.log(form)
 
     form.style.display = "block"
 
-    // const card = document.querySelector(".restaurant-card[data-index='" + index + "']")
-    // const scheduleForm = document.querySelector("#schedule-form-" + index)
-    // scheduleForm.innerHTML = '<form id="schedule-form"><label for="schedule">Choose a schedule:</label><select id="schedule" name="schedule"><option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option><option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option><option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option><option value="7:00 PM - 9:00 PM">7:00 PM - 9:00 PM</option><option value="9:00 PM - 11:00 PM">9:00 PM - 11:00 PM</option></select><br><br><input type="submit" value="Submit"> <input type="number" id="quantity" name="quantity" min="1" max="99" value="1"><button onclick="decrement()">-</button><button onclick="increment()">+</button></form>'
-
-    // card.style.gridTemplateColumns = "25% 75%"
 }
 
 
 
+document.getElementById("signup-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+    location.reload();
+});
+
+document.querySelector("#form-button").addEventListener("click", function(event) {
+    event.preventDefault();
+    location.reload();
+});
 
 
 function createRestaurantCard(restaurant, index) {
@@ -209,11 +196,6 @@ function createRestaurantCard(restaurant, index) {
 
     const scheduleForm = document.createElement("div")
     scheduleForm.id = "schedule-form-" + index
-    
-    // const container = document.createElement("div")
-    // container.appendChild(calendarContainer)
-    // container.appendChild(scheduleForm)
-    // rc2.appendChild(container)
 
     button.onclick = e => unfoldCalendar(e)
     rc2.appendChild(button)
@@ -227,10 +209,8 @@ function createRestaurantCard(restaurant, index) {
     return restaurantCard;
 }
 
-    // Get the target element
-    const cardsContainer = document.getElementById('cards');
 
-    // Loop through each restaurant and create a card for it
+    const cardsContainer = document.getElementById('cards');
     restaurants.forEach((restaurant, index) => {
         const newRestaurantCard = createRestaurantCard(restaurant, index);
         cardsContainer.appendChild(newRestaurantCard);

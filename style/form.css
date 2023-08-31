@@ -48,3 +48,13 @@ form button {
     
     font-size: larger;
 }
+
+
+form input {
+    width: 100%;
+}
+
+#schedule-form {
+    background: white;
+    position: relative; z-index: 12;
+}

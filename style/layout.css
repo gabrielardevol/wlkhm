@@ -18,6 +18,11 @@ p {
     text-align: center;
 }
 
+footer {
+    color: white;
+    border-top: 1px solid white;
+    text-align: center;
+}
 
 .text-shadow {
     font-weight: bold;
